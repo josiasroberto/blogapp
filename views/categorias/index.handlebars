@@ -1,0 +1,33 @@
+<h4>Categorias: </h4>
+<hr>
+
+{{#each categorias}}
+
+<ul class="list-group">
+  <a href="/categorias/{{slug}}">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{nome}}
+  </a>
+
+  <span class="badge text-bg-secondary">1</span>
+
+  </li>
+</ul>
+
+
+{{else}}
+
+{{/each}}
+
+
+
+{{#each postagens}}
+<span class="badge text-bg-secondary">{{loud slug}}</span>
+{{/each}}
+
+
+<script>
+  Handlebars.registerHelper('loud', (aString) => {
+    return aString.toUpperCase()
+  })
+</script>
