@@ -11,6 +11,11 @@
 
 <body>
   {{>_navbar}}
+  {{#if error}}
+  <div class="alert alert-danger">{{this.error}}</div>
+  {{else}}
+
+  {{/if}}
   {{>_msg}}
   <!-- usar ">" para inserir um partial -->
   <div class="container mt-4">
