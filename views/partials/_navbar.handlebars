@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Blog do Node</a>
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Blog do Node</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,20 +16,48 @@
           <a class="nav-link" href="/categorias">Categorias</a>
         </li>
         {{#if user}}
-        <li class="nav-item">
-          <a class="nav-link" href="/usuarios/logout">Sair</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin/categorias">Categorias</a></li>
+            <li><a class="dropdown-item" href="/admin/postagens">Postagens</a></li>
+          </ul>
         </li>
         {{else}}
 
-        <li class="nav-item">
+        {{!-- <li class="nav-item">
           <a class="nav-link" href="/usuarios/login">Login</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/usuarios/registro">Registro</a>
-        </li>
+        </li> --}}
         {{/if}}
       </ul>
+      {{#if user}}
+
+      <span class="navbar-text me-3">
+        Olá {{user.nome}}
+      </span>
+
+
+      <span class="navbar-text">
+        <a class="nav-link" href="/usuarios/logout"> Sair</a>
+      </span>
+
+      {{else}}
+      <span class="navbar-text me-3">
+        <a class="nav-link" href="/usuarios/login">Login</a>
+      </span>
+
+
+      <span class="navbar-text">
+        <a class="nav-link" href="/usuarios/registro">Registro</a>
+      </span>
+
+      {{/if}}
 
     </div>
   </div>

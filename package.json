@@ -1,13 +1,13 @@
 {
   "name": "blogapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app to 'CRUD' posts and your categories",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Josias Roberto",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

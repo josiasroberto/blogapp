@@ -18,7 +18,10 @@
       <input type="text" id="descricao" name="descricao" class="form-control" value="{{req.body.descricao}}" required>
 
       <label for="conteudo">Conteudo:</label>
-      <textarea id="conteudo" name="conteudo" class="form-control" required>{{req.body.conteudo}}</textarea>
+      <textarea id="conteudo" name="conteudo" class="form-control" cols="30" rows="10"
+        required>{{req.body.conteudo}}</textarea>
+
+
 
       <label for="categoria">Categoria:</label>
       <select name="categoria" class="form-select">

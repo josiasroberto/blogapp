@@ -15,7 +15,6 @@
 
   const passport = require('passport')
   require('./config/auth')(passport)
-
   
 
 //Configurações
@@ -39,18 +38,22 @@
         res.locals.user = req.user || null;
         next()
       })
-
-
   
     app.use(express.urlencoded({extended: true}))
     app.use(express.json())
 
   //Handlebars
-    app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
+    app.engine('handlebars', handlebars.engine({
+      defaultLayout: 'main',
+      runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    },
+    }))
     app.set('view engine', 'handlebars')
 
   //Mongoose
-    mongoose.connect('mongodb://localhost/blogapp').then(()=>{
+    mongoose.connect('mongodb://127.0.0.1:27017/blogapp').then(()=>{
       console.log("Conectado ao mongo")
     }).catch((err)=>{
       console.log("Erro ao se conectar: "+ err)
@@ -58,7 +61,8 @@
 
   //Public (pasta de arquivos estáticos)
     app.use(express.static(path.join(__dirname, '/public')))
-
+    //app.use("/images", express.static(path.join(__dirname, "/public/images")))
+    
  
 //Rotas
   app.get('/',(req, res) =>{
