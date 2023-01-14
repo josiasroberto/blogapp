@@ -15,6 +15,8 @@
 
   const passport = require('passport')
   require('./config/auth')(passport)
+
+  const db = require("./config/db")
   
 
 //Configurações
@@ -53,7 +55,7 @@
     app.set('view engine', 'handlebars')
 
   //Mongoose
-    mongoose.connect('mongodb://127.0.0.1:27017/blogapp').then(()=>{
+    mongoose.connect(db.mongoURI).then(()=>{
       console.log("Conectado ao mongo")
     }).catch((err)=>{
       console.log("Erro ao se conectar: "+ err)
@@ -125,7 +127,7 @@
   app.use('/admin',admin)
   app.use('/usuarios',usuarios)
 //Outros
-const PORT = 8081
+const PORT = process.env.PORT || 8081
 app.listen(PORT,()=>{
   console.log("Server running on port " + PORT)
 })
